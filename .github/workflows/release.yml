@@ -32,5 +32,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build Docker Image
-        run: docker buildx bake ${{matrix.image}}
+      - name: Build Docker image
+        run: docker buildx bake ${{ matrix.image }}
+
+      - name: Install bats
+        run: npm install -g bats@1.10.0
+
+      - name: Test Docker image
+        run: bats test/${{ matrix.image }}.bats
