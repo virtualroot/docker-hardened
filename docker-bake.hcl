@@ -2,6 +2,10 @@ variable "USERNAME" {
   default = "app"
 }
 
+group "default" {
+  targets = ["alpine", "debian", "ubuntu"]
+}
+
 target "alpine" {
   dockerfile = "Dockerfile.alpine"
   tags = ["virtualroot/hardened-alpine:3.18"]
