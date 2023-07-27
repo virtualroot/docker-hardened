@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         image: ['alpine', 'debian', 'ubuntu']
 
@@ -33,7 +34,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Docker image
-        run: docker buildx bake ${{ matrix.image }}
+        run: docker buildx bake --load ${{ matrix.image }}
 
       - name: Install bats
         run: npm install -g bats@1.10.0
