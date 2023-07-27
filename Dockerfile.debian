@@ -1,0 +1,9 @@
+ARG image
+FROM $image
+
+ARG username
+
+RUN adduser --shell /bin/false --home /$username --disabled-password $username
+
+WORKDIR /$username
+USER $username

@@ -1,0 +1,9 @@
+ARG image
+FROM $image
+
+ARG username
+
+RUN adduser -s /bin/false -D -h /$username $username
+
+WORKDIR /$username
+USER $username
