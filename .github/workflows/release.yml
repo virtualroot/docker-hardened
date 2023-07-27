@@ -10,6 +10,10 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        image: ['alpine', 'debian', 'ubuntu']
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -28,8 +32,5 @@ jobs:
 #          username: ${{ secrets.DOCKERHUB_USERNAME }}
 #          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push
-        uses: docker/build-push-action@v4
-        with:
-          push: false
-          tags: user/app:latest
+      - name: Build Docker Image
+        run: docker buildx bake ${{matrix.image}}
