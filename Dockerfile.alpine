@@ -3,7 +3,8 @@ FROM $image
 
 ARG username
 
-RUN adduser -s /bin/false -D -h /$username $username
+RUN addgroup --gid 12123 $username && \
+    adduser --uid 12123 -G $username -s /bin/false -D -h /$username $username
 
 WORKDIR /$username
 USER $username
