@@ -1,5 +1,4 @@
-ARG image
-FROM $image
+FROM alpine:3.18
 
 ARG username
 

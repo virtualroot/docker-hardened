@@ -1,5 +1,4 @@
-ARG image
-FROM $image
+FROM ubuntu:22.04
 
 ARG username
 
