@@ -1,5 +1,4 @@
-ARG image
-FROM $image
+FROM debian:12-slim
 
 ARG username
 
