@@ -33,10 +33,10 @@ jobs:
         run: docker buildx bake --load ${{ matrix.image }}
 
       - name: Install bats
-        run: npm install -g bats@1.10.0
+        run: npm install bats@1.11.0
 
       - name: Test Docker image
-        run: bats test/${{ matrix.image }}.bats
+        run: npm exec -- bats test/${{ matrix.image }}.bats
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
